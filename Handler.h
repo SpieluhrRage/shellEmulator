@@ -2,7 +2,7 @@
 #include<iostream>
 class CommandHandler {
 public:
-	static void execute(const std::string& command) {
+	static void execute(const std::string& command, FileSystem& fs, std::string currentDirectory) {
 		if (command == "ls") {
 
 		}

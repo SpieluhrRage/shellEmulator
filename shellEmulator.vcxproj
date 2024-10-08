@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClInclude Include="fileSysr.h" />
     <ClInclude Include="Handler.h" />
+    <ClInclude Include="Shell.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
