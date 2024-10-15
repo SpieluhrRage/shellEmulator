@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include "fileSysr.h"
 class CommandHandler {
 public:
 	static void execute(const std::string& command, FileSystem& fs, std::string currentDirectory) {

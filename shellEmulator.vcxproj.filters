@@ -13,6 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="runtimes">
+      <UniqueIdentifier>{855049a0-fffe-476f-82e2-a4d5bb842451}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="runtimes\win-x64">
+      <UniqueIdentifier>{86f08f57-8176-4499-94fa-e5de38461bac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="runtimes\osx-any64">
+      <UniqueIdentifier>{c7c59e54-a1d0-4e7d-a882-bf1232fac790}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="runtimes\osx-any64\libarchive.dylib">
+      <UniqueIdentifier>{567ab1c6-041b-49ea-9877-198a0a1cd9cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="runtimes\linux-x64">
+      <UniqueIdentifier>{ef426ab2-e07a-48a3-8299-a58227ede1c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -29,5 +44,22 @@
     <ClInclude Include="Shell.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="TarHandler.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="runtimes\win-x64\archive.dll">
+      <Filter>runtimes\win-x64</Filter>
+    </None>
+    <None Include="runtimes\osx-any64\libarchive.dylib\libarchive.dylib">
+      <Filter>runtimes\osx-any64\libarchive.dylib</Filter>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="runtimes\linux-x64\libarchive.so">
+      <Filter>runtimes\linux-x64</Filter>
+    </Library>
   </ItemGroup>
 </Project>
