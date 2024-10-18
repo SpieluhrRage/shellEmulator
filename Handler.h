@@ -1,6 +1,8 @@
 #pragma once
 #include<iostream>
 #include "fileSysr.h"
+#include <sstream>
+#include <algorithm>
 
 class CommandHandler {
 public:
@@ -19,6 +21,9 @@ public:
         }
         else if (command.find("wc") == 0) {
             wc(fs, command.substr(3), currentDirectory);
+        }
+        else if (command.find("exitShell" == 0)) {
+            exitShell();
         }
         else {
             std::cerr << "Unknown command: " << command << std::endl;

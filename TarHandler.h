@@ -21,6 +21,9 @@ public:
 
         while (tarFile.read(buffer, BLOCK_SIZE)) {
             // Извлечение имени файла из заголовка
+            if (std::all_of(buffer, buffer + BLOCK_SIZE, [](char c) { return c == '\0'; })) {
+                break;
+            }
             std::string fileName(buffer, 100);
             fileName.erase(fileName.find_last_not_of(' ') + 1); // Удаление лишних пробелов
 
@@ -30,8 +33,27 @@ public:
             }
 
             // Определение размера файла
+            int fileSize = 0;
             std::string sizeStr(buffer + 124, 12);
-            int fileSize = std::stoi(sizeStr, nullptr, 8); // Размер в восьмеричном формате
+          /*  std::cout << "Reading tar block header: ";
+            for (int i = 0; i < 100; ++i) {
+                std::cout << buffer[i];
+            }
+            std::cout << std::endl;
+            std::cout << "Raw size string from tar header: [" << sizeStr << "]" << std::endl;*/
+            try {
+                sizeStr.erase(std::remove(sizeStr.begin(), sizeStr.end(), ' '), sizeStr.end()); // Удаление пробелов
+
+                fileSize = std::stoi(sizeStr, nullptr, 8); // Размер в восьмеричном формате
+            }
+            catch (const std::invalid_argument& e) {
+                std::cerr << "Error: Invalid size value in tar header: [" << sizeStr << "]" << std::endl;
+                return false;
+            }
+            catch (const std::out_of_range& e) {
+                std::cerr << "Error: Size value out of range in tar header: [" << sizeStr << "]" << std::endl;
+                return false;
+            }
 
             // Создание узла в виртуальной файловой системе
             createNodeInFileSystem(fs, fileName, fileSize > 0);

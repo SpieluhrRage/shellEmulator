@@ -2,6 +2,8 @@
 #include<string>
 #include<vector>
 #include <algorithm>
+#include <sstream>
+
 class FileSystem {
 public:
     struct Node {
